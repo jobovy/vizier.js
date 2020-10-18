@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="../src/vizier.js"></script>
+  </head>
+  <body>
+    <div id="plot" style="width:600px;height:400px;"></div>
+    <script>
+      VizieR.fetch('J/A+A/545/A32','table4.dat','ReadMe')
+    .then(function (dataAndheader) {
+	let [data,header]= dataAndheader;
+	Plotly.newPlot('plot',
+		       [{x: data['[Fe/H]'],
+			 y: data['[Mg/H]'].map((x,i) => x-data['[Fe/H]'][i]),
+			 mode: 'markers',
+			 type: 'scatter'}],
+		       {
+			   title: {
+			       text:`[Mg/Fe] vs. [Fe/H] from ${header['author']} ${header['year']}`,
+			       font: {
+				   size: 24
+			       },
+			   },
+			   xaxis: {
+			       title: {
+				   text: '[Fe/H]',
+				   font: {
+				       size: 18,
+				   }
+			       },
+			   },
+			   yaxis: {
+			       title: {
+				   text: '[Mg/Fe]',
+				   font: {
+				       size: 18,
+				   }
+			       }
+			   }
+		       });
+	 });
+    </script>
+  </body>
+</html>

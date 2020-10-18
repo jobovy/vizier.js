@@ -1,0 +1,22 @@
+{
+  "name": "@jobovy/vizier",
+  "version": "0.0.1",
+  "description": "Fetch data tables from VizieR in the browser",
+  "main": "src/vizier.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobovy/vizier.js.git"
+  },
+  "author": "Jo Bovy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jobovy/vizier.js/issues"
+  },
+  "homepage": "https://github.com/jobovy/vizier.js#readme"
+}
