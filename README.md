@@ -11,7 +11,7 @@ Jo Bovy (University of Toronto): bovy - at - astro - dot - utoronto - dot - ca
 
 ## Usage
 
-Only very basic usage is currently implemented. See [examples/basic.html](examples/basic.html) for a fully worked basic example.
+Only very basic usage is currently implemented. See [examples/basic.html](examples/basic.html) for a fully worked basic example. An example of loading a single file that contains both the ReadMe and the data and that is *not* on the CDS servers is given in [examples/onefile.html](examples/onefile.html).
 
 Load the library, e.g., from jsDelivr using
 ```
@@ -26,6 +26,15 @@ This exposes a global variable ``VizieR`` that contains the functionality of thi
 Fetch a table by specifying the catalog's name (e.g., 'J/A+A/545/A32'), the specific table within the catalog's name (e.g., 'table4.dat'), and the name of the ReadMe (optional, e.g., 'ReadMe'). This returns a Promise that returns the data dictionary and the header, which you can then process with a ``then`` function. For example,
 ```
 VizieR.fetch('J/A+A/545/A32','table4.dat','ReadMe')
+   .then(function (dataAndHeader) {
+     let [data,header]= dataAndHeader;
+     // do stuff with the data and/or the header!
+   });
+```
+
+You can also fetch a table from a general URL, in that case just set the first argument to ``null``. For example,
+```
+VizieR.fetch(null,'https://raw.githubusercontent.com/jobovy/sparc-rotation-curves/main/data/MassModels_Lelli2016c.mrt')
    .then(function (dataAndHeader) {
      let [data,header]= dataAndHeader;
      // do stuff with the data and/or the header!
