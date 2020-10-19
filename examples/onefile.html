@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="../src/vizier.js"></script>
+  </head>
+  <body>
+    <div id="plot" style="width:600px;height:400px;"></div>
+    <script>
+      /*
+       Example of parsing a file that contains ReadMe +  data
+       */
+      VizieR.fetch(null,'https://raw.githubusercontent.com/jobovy/sparc-rotation-curves/main/data/MassModels_Lelli2016c.mrt')
+    .then(function (dataAndheader) {
+	let [data,header]= dataAndheader;
+	Plotly.newPlot('plot',
+		       [{x: data['R'].filter((row,i) => data['ID'][i].trim() == 'UGC08490'),
+			 y: data['Vobs'].filter((row,i) => data['ID'][i].trim() == 'UGC08490'),
+			 error_y: {
+			     type: 'data',
+			     array: data['e_Vobs'].filter((row,i) => data['ID'][i].trim() == 'UGC08490')
+			 },
+			 mode: 'markers',
+			 type: 'scatter'}],
+		       {
+			   title: {
+			       text:`Rotation curve of UGC08490 from ${header['author']}`,
+			       font: {
+				   size: 16
+			       },
+			   },
+			   xaxis: {
+			       title: {
+				   text: 'R (kpc)',
+				   font: {
+				       size: 18,
+				   }
+			       },
+			   },
+			   yaxis: {
+			       title: {
+				   text: 'circular velocity (km/s)',
+				   font: {
+				       size: 18,
+				   }
+			       },
+			       range: [0, 90]
+			   }
+		       });
+	 });
+    </script>
+  </body>
+</html>
