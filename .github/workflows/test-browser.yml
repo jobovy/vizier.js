@@ -1,0 +1,23 @@
+name: Browser tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Integration tests in the browser
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: |
+          npm install
+          npm run develop
+      - name: Start local server
+        run: |
+          npm i -g serve
+          serve -l 8080 &
+      - run: npm run cypress:coverage
+      - uses: codecov/codecov-action@v1

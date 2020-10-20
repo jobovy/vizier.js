@@ -1,54 +1,57 @@
 <!doctype html>
 <html>
   <head>
+    <title>Basic vizier.js example</title>
+    <!-- We need to load jQuery for handling the table download request -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- We need to load Plotly to make the plot -->
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    <script src="../src/vizier.js"></script>
+    <!-- Finally, we load vizier.js; replace with a CDN or local URL -->
+    <script src="../build/vizier.js"></script>
+     <!-- The following is some simple styling of the javascript code shown on the page -->
+    <style>
+      .scriptblock {
+          border: black;
+          border-style: groove;
+          background: #e6e6e6;
+          display: inline-block;
+      }
+      
+      .code {
+          font-family: Courier New, Courier, monospace;
+      }
+    </style>
   </head>
   <body>
-    <div id="plot" style="width:600px;height:400px;"></div>
-    <script>
-      /*
-       Example of parsing a file that contains ReadMe +  data
-       */
+    <h1>An example of fetching a single Vizier-style file that contains both ReadMe and data</h1>
+    <!-- The following div just shows the script -->
+    <div class="scriptblock code"><p id="script-div"></p></div>
+    <!-- The next div will hold the orbit plot -->
+    <div id="plotly-graph" style="width:600px;height:400px;"></div>
+    <!-- The following script fetches the table from VizieR and plots it -->
+    <script id="onefile-vizier-script">
       VizieR.fetch(null,'https://raw.githubusercontent.com/jobovy/sparc-rotation-curves/main/data/MassModels_Lelli2016c.mrt')
     .then(function (dataAndheader) {
 	let [data,header]= dataAndheader;
-	Plotly.newPlot('plot',
+	Plotly.newPlot('plotly-graph',
 		       [{x: data['R'].filter((row,i) => data['ID'][i].trim() == 'UGC08490'),
 			 y: data['Vobs'].filter((row,i) => data['ID'][i].trim() == 'UGC08490'),
-			 error_y: {
-			     type: 'data',
-			     array: data['e_Vobs'].filter((row,i) => data['ID'][i].trim() == 'UGC08490')
+			 error_y: {type: 'data',
+				   array: data['e_Vobs'].filter((row,i) => data['ID'][i].trim() == 'UGC08490')
 			 },
-			 mode: 'markers',
-			 type: 'scatter'}],
-		       {
-			   title: {
-			       text:`Rotation curve of UGC08490 from ${header['author']}`,
-			       font: {
-				   size: 16
-			       },
-			   },
-			   xaxis: {
-			       title: {
-				   text: 'R (kpc)',
-				   font: {
-				       size: 18,
-				   }
-			       },
-			   },
-			   yaxis: {
-			       title: {
-				   text: 'circular velocity (km/s)',
-				   font: {
-				       size: 18,
-				   }
-			       },
-			       range: [0, 90]
-			   }
+			 mode: 'markers',type: 'scatter'}],
+		       {title: {text:`Rotation curve of UGC08490 from ${header['author']}`,
+				font: {size: 16}},
+			xaxis: {title: {text: 'R (kpc)',font: {size: 18}}},
+			yaxis: {title: {text: 'circular velocity (km/s)',font: {size: 18}},range: [0, 90]}
 		       });
-	 });
+    });
     </script>
+    <!-- The next script copies the above script to be displayed on the generated HTML page -->
+    <script>
+      let scriptContent= $('#onefile-vizier-script').html();
+      scriptContent= scriptContent.substring(1,scriptContent.length-2).replace(/\n/g, "<br/>");
+      $('#script-div').html(scriptContent);
+      </script>
   </body>
 </html>

@@ -7,7 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:test": "nyc instrument ./src ./build && npx cypress run -b chrome --headless",
+    "cypress:coverage": "nyc instrument ./src ./build && npx cypress run  -b chrome --headless && nyc report --reporter=text --reporter=lcovonly"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/jobovy/vizier.js/issues"
   },
-  "homepage": "https://github.com/jobovy/vizier.js#readme"
+  "homepage": "https://github.com/jobovy/vizier.js#readme",
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.8.2",
+    "cypress": "^5.4.0",
+    "nyc": "^15.1.0"
+  }
 }

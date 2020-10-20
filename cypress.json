@@ -1,0 +1,7 @@
+{
+    "pluginsFile": "cypress/plugins/index.js",
+    "supportFile": "cypress/support/index.js",
+    "ignoreTestFiles": "*~",
+    "video": false,
+    "baseUrl": "http://localhost:8080"
+}

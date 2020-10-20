@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Basic vizier.js example, but forgetting to load jQuery</title>
+    <!-- We need to load jQuery for handling the table download request -->
+    <!-- But we forget! -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <!-- We need to load Plotly to make the plot -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <!-- Finally, we load vizier.js; replace with a CDN or local URL -->
+    <script src="../build/vizier.js"></script>
+     <!-- The following is some simple styling of the javascript code shown on the page -->
+    <style>
+      .scriptblock {
+          border: black;
+          border-style: groove;
+          background: #e6e6e6;
+          display: inline-block;
+      }
+      
+      .code {
+          font-family: Courier New, Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>A basic example of fetching, processing, and plotting a table retrieved from VizieR, but forgetting to load jQuery</h1>
+    <!-- Nothing here, doesn't work! -->
+  </body>
+</html>

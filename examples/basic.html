@@ -1,46 +1,55 @@
 <!doctype html>
 <html>
   <head>
+    <title>Basic vizier.js example</title>
+    <!-- We need to load jQuery for handling the table download request -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- We need to load Plotly to make the plot -->
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    <script src="../src/vizier.js"></script>
+    <!-- Finally, we load vizier.js; replace with a CDN or local URL -->
+    <script src="../build/vizier.js"></script>
+     <!-- The following is some simple styling of the javascript code shown on the page -->
+    <style>
+      .scriptblock {
+          border: black;
+          border-style: groove;
+          background: #e6e6e6;
+          display: inline-block;
+      }
+      
+      .code {
+          font-family: Courier New, Courier, monospace;
+      }
+    </style>
   </head>
   <body>
-    <div id="plot" style="width:600px;height:400px;"></div>
-    <script>
+    <h1>A basic example of fetching, processing, and plotting a table retrieved from VizieR</h1>
+    <!-- The following div just shows the script -->
+    <div class="scriptblock code"><p id="script-div"></p></div>
+    <!-- The next div will hold the orbit plot -->
+    <div id="plotly-graph" style="width:600px;height:400px;"></div>
+    <!-- The following script fetches the table from VizieR and plots it -->
+    <script id="basic-vizier-script">
       VizieR.fetch('J/A+A/545/A32','table4.dat','ReadMe')
     .then(function (dataAndheader) {
 	let [data,header]= dataAndheader;
-	Plotly.newPlot('plot',
+	Plotly.newPlot('plotly-graph',
 		       [{x: data['[Fe/H]'],
 			 y: data['[Mg/H]'].map((x,i) => x-data['[Fe/H]'][i]),
 			 mode: 'markers',
 			 type: 'scatter'}],
-		       {
-			   title: {
-			       text:`[Mg/Fe] vs. [Fe/H] from ${header['author']} ${header['year']}`,
-			       font: {
-				   size: 24
-			       },
-			   },
-			   xaxis: {
-			       title: {
-				   text: '[Fe/H]',
-				   font: {
-				       size: 18,
-				   }
-			       },
-			   },
-			   yaxis: {
-			       title: {
-				   text: '[Mg/Fe]',
-				   font: {
-				       size: 18,
-				   }
-			       }
-			   }
+		       {title: {text:`[Mg/Fe] vs. [Fe/H] from ${header['author']} ${header['year']}`,
+				font: {size: 24}},
+			xaxis: {title: {text: '[Fe/H]',font: {size: 18}}},
+			yaxis: {title: {text: '[Mg/Fe]',font: {size: 18}}}
 		       });
-	 });
+    });
     </script>
+    <!-- The next script copies the above script to be displayed on the generated HTML page -->
+    <script>
+      let scriptContent= $('#basic-vizier-script').html();
+      scriptContent= scriptContent.substring(1,scriptContent.length-2).replace(/\n/g, "<br/>");
+      $('#script-div').html(scriptContent);
+      </script>
   </body>
 </html>
