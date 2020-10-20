@@ -4,7 +4,7 @@ Fetch data tables from VizieR in the browser
 [![npm version](https://badge.fury.io/js/%40jobovy%2Fvizier.svg)](https://badge.fury.io/js/%40jobovy%2Fvizier)
 [![jsDelivr](https://badgen.net/jsdelivr/v/npm/@jobovy/vizier)](https://www.jsdelivr.com/package/npm/@jobovy/vizier)
 ![Browser tests](https://github.com/jobovy/vizier.js/workflows/Browser%20tests/badge.svg)
-[![codecov](https://codecov.io/gh/jobovy/vizier.js/branch/master/graph/badge.svg)](https://codecov.io/gh/jobovy/vizier.js)
+[![codecov](https://codecov.io/gh/jobovy/vizier.js/branch/main/graph/badge.svg)](https://codecov.io/gh/jobovy/vizier.js)
 
 ## Overview
 
