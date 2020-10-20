@@ -162,9 +162,6 @@
 	});
     }   
 
-    // Export module for node.js and browser
-    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-        module.exports = VizieR;
-    else 
-        window.VizieR = VizieR;
+    // Export module
+    window.VizieR = VizieR;
 })();
