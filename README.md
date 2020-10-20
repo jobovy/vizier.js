@@ -1,6 +1,9 @@
 # vizier.js
 Fetch data tables from VizieR in the browser
 
+![Browser tests](https://github.com/jobovy/vizier.js/workflows/Browser%20tests/badge.svg)
+[![codecov](https://codecov.io/gh/jobovy/vizier.js/branch/master/graph/badge.svg)](https://codecov.io/gh/jobovy/vizier.js)
+
 ## Overview
 
 This small javascript package allows you to fetch a table from [VizieR](https://vizier.u-strasbg.fr/) asynchronously and process the data table into a dictionary according to the ReadMe.
