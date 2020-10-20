@@ -50,7 +50,7 @@ VizieR.fetch(null,'https://raw.githubusercontent.com/jobovy/sparc-rotation-curve
 
 Follow the following steps:
 
-* Update the version in ``package.json``
+* Update the version in ``package.json`` and then run ``npm install``. Commit updated version in ``package.json`` and ``package-lock.json``
 * Create a new git tag for this version: ``git tag vX.X.X``
 * Package up for npm: ``npm pack``, check that no extraneous files are included
 * Publish to npm: ``npm publish --access public``
