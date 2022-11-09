@@ -1,6 +1,6 @@
 {
   "name": "@jobovy/vizier",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fetch data tables from VizieR in the browser",
   "main": "src/vizier.js",
   "directories": {

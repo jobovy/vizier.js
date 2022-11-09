@@ -22,9 +22,9 @@ Load the library, e.g., from jsDelivr using
 ```
 <script src="https://cdn.jsdelivr.net/npm/@jobovy/vizier"></script>
 ```
-for the latest version or specify the version with (update 1.0.1 to later versions as necessary)
+for the latest version or specify the version with (update 1.0.2 to later versions as necessary)
 ```
-<script src="https://cdn.jsdelivr.net/npm/@jobovy/vizier@1.0.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jobovy/vizier@1.0.2"></script>
 ```
 This exposes a global variable ``VizieR`` that contains the functionality of this package.
 
