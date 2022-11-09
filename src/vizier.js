@@ -130,8 +130,8 @@
 	    data_url= datafile;
 	    readme_url= ReadMe;
 	} else {
-	    data_url= `https://cdsarc.unistra.fr/ftp/${cat}/${datafile}`;
-	    readme_url= `https://cdsarc.unistra.fr/ftp/${cat}/${ReadMe}`;
+	    data_url= `https://cdsarc.cds.unistra.fr/ftp/${cat}/${datafile}`;
+	    readme_url= `https://cdsarc.cds.unistra.fr/ftp/${cat}/${ReadMe}`;
 	}
 	
 	let jqXHR;
