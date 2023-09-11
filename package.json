@@ -22,7 +22,7 @@
   "homepage": "https://github.com/jobovy/vizier.js#readme",
   "devDependencies": {
     "@cypress/code-coverage": "^3.8.2",
-    "cypress": "^5.4.0",
+    "cypress": "^13.1.0",
     "nyc": "^15.1.0"
   }
 }
